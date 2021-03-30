@@ -8,7 +8,7 @@ export interface Analyzer {
   analyze: (html: string, filePath: string) => string
 }
 
-class Crowller {
+export default class Crowller {
   private filePath = path.resolve(__dirname, '../data/course.json');
   private async getRawHtml() {
     const result = await superagent.get(this.url)
@@ -26,6 +26,6 @@ class Crowller {
   }
 }
 
-const url = 'http://www.dell-lee.com'
-const analyzer = DataAnalyser.getInstance()
-new Crowller(url, analyzer)
+// const url = 'http://www.dell-lee.com'
+// const analyzer = DataAnalyser.getInstance()
+// new Crowller(url, analyzer)
