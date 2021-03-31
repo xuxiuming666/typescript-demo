@@ -8,12 +8,18 @@ var crowller_1 = __importDefault(require("./crowller"));
 var instanceAnalyser_1 = __importDefault(require("./instanceAnalyser"));
 var router = express_1.Router();
 router.get('/', function (req, res) {
-    res.send('hello world');
+    res.send("\n    <html>\n      <body>\n        <form method='post' action='/getData'>\n          <input type='password' name='password' />\n          <button>\u63D0\u4EA4</button>\n        </form>\n      </body>\n    </html>\n  ");
 });
-router.get('/getData', function (req, res) {
-    var url = 'http://www.dell-lee.com';
-    var analyzer = instanceAnalyser_1.default.getInstance();
-    new crowller_1.default(url, analyzer);
-    res.send('by world');
+router.post('/getData', function (req, res) {
+    var password = req.body.password;
+    if (password === '123') {
+        var url = 'http://www.dell-lee.com';
+        var analyzer = instanceAnalyser_1.default.getInstance();
+        new crowller_1.default(url, analyzer);
+        res.send('getData success');
+    }
+    else {
+        res.send('password error!');
+    }
 });
 exports.default = router;
